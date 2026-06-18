@@ -31,5 +31,20 @@ class GameBoardStateTest {
         assertEquals(GamePlayer.X, newGameState.currentGamePlayer)
     }
 
+    @Test
+    fun `game is over when player wins with row`() {
+        val gameBoardState = GameBoardState()
+        var state = gameBoardState
+        // X: 0, O: 3, X: 1, O: 4, X: 2 (X wins)
+        state = state.playMove(0)  // X at 0
+        state = state.playMove(3)  // O at 3
+        state = state.playMove(1)  // X at 1
+        state = state.playMove(4)  // O at 4
+        state = state.playMove(2)  // X at 2 (wins)
+
+        assertTrue(state.isGameOver)
+        assertEquals(GameBoardResult.X_WINS, state.gameBoardResult)
+    }
+
 
 }
