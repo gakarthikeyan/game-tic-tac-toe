@@ -42,5 +42,15 @@ class GameBoardTest {
         assertEquals(newBoard, result)
     }
 
-
+    @Test
+    fun `board is full when all cells are occupied`() {
+        val gameBoard = GameBoard(
+            cells = arrayOf(
+                GamePlayer.X, GamePlayer.O, GamePlayer.X,
+                GamePlayer.O, GamePlayer.X, GamePlayer.O,
+                GamePlayer.O, GamePlayer.X, GamePlayer.X
+            )
+        )
+        assertTrue(gameBoard.isFull())
+    }
 }
