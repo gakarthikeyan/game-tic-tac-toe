@@ -88,7 +88,45 @@ class GameScreenInstrumentedTest {
         composeTestRule.onNodeWithText("Current Player: X").assertExists()
     }
 
+    @Test
+    fun clickingCellPlacesPlayerMark() {
+        composeTestRule.setContent {
+            GameScreen()
+        }
 
+        composeTestRule.waitForIdle()
+
+        // Get all game cells and click the first one
+        val cells = composeTestRule.onAllNodesWithContentDescription("")
+        if (cells.fetchSemanticsNodes().isNotEmpty()) {
+            cells[0].performClick()
+            composeTestRule.waitForIdle()
+            // After first click, should show O's turn
+            composeTestRule.onNodeWithText("Current Player: O").assertExists()
+        }
+    }
+
+    @Test
+    fun multipleConsecutiveClicks() {
+        composeTestRule.setContent {
+            GameScreen()
+        }
+
+        composeTestRule.waitForIdle()
+
+        val cells = composeTestRule.onAllNodesWithContentDescription("")
+        if (cells.fetchSemanticsNodes().size >= 2) {
+            // Click first cell (X's turn)
+            cells[0].performClick()
+            composeTestRule.waitForIdle()
+            composeTestRule.onNodeWithText("Current Player: O").assertExists()
+
+            // Click second cell (O's turn)
+            cells[1].performClick()
+            composeTestRule.waitForIdle()
+            composeTestRule.onNodeWithText("Current Player: X").assertExists()
+        }
+    }
 
     private fun setupKoin() {
         try {
