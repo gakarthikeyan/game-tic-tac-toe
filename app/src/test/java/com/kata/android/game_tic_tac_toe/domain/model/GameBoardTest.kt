@@ -152,5 +152,16 @@ class GameBoardTest {
         assertFalse(gameBoard.hasWinningDiagonal(GamePlayer.X))
     }
 
+    @Test
+    fun `board is not empty when at least one cell is occupied`() {
+        val gameBoard = GameBoard()
+        val newBoard = gameBoard.placeMark(0, GamePlayer.X)
+        assertFalse(newBoard.isEmpty())
+    }
 
+    @Test
+    fun `board is empty when all cells are null`() {
+        val gameBoard = GameBoard()
+        assertTrue(gameBoard.isEmpty())
+    }
 }
