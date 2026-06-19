@@ -4,4 +4,5 @@ import com.kata.android.game_tic_tac_toe.domain.model.GameBoardState
 
 interface GameRepository {
     suspend fun getGameState(): GameBoardState
+    suspend fun saveGameState(state: GameBoardState)
 }

@@ -8,4 +8,8 @@ class GameRepositoryImpl : GameRepository {
     override suspend fun getGameState(): GameBoardState {
         return gameBoardState
     }
+
+     override suspend fun saveGameState(state: GameBoardState) {
+        gameBoardState = state
+    }
 }
