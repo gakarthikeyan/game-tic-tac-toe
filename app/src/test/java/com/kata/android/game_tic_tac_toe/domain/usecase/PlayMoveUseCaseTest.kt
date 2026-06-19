@@ -15,14 +15,30 @@ class PlayMoveUseCaseTest {
     private val playMoveUseCase = PlayMoveUseCase(gameRepository)
 
     @Test
-    fun `play move on empty board places X mark state`(): Unit = runBlocking {
+    fun `play move on empty board places X mark and saves state`(): Unit = runBlocking {
         val initialState = GameBoardState()
         val expectedState = initialState.playMove(0)
+
         coEvery { gameRepository.getGameState() } returns initialState
+        coEvery { gameRepository.saveGameState(expectedState) } returns Unit
+
         val result = playMoveUseCase(0)
         
         assertEquals(expectedState.gameBoard.cells[0], GamePlayer.X)
         assertEquals(GamePlayer.O, result.currentGamePlayer)
     }
 
+    @Test
+    fun `play move returns updated game state`(): Unit = runBlocking {
+        val initialState = GameBoardState()
+        var state = initialState
+        state = state.playMove(0)  // X at 0
+
+        coEvery { gameRepository.getGameState() } returns initialState
+        coEvery { gameRepository.saveGameState(state) } returns Unit
+
+        val result = playMoveUseCase(0)
+
+        assertEquals(state, result)
+    }
 }
