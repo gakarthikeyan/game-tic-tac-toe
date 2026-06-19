@@ -92,5 +92,17 @@ class GameBoardTest {
         assertFalse(gameBoard.hasWinningRow(GamePlayer.X))
     }
 
+    @Test
+    fun `can check if player has winning column`() {
+        val gameBoard = GameBoard(
+            cells = arrayOf(
+                GamePlayer.X, null, null,
+                GamePlayer.X, null, null,
+                GamePlayer.X, null, null
+            )
+        )
+        assertTrue(gameBoard.hasWinningColumn(GamePlayer.X))
+    }
+
 
 }
