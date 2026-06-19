@@ -1,4 +1,4 @@
-package com.kata.android.game_tic_tac_toe.presentation.di
+package com.kata.android.game_tic_tac_toe.di
 
 import com.kata.android.game_tic_tac_toe.domain.repository.GameRepository
 import com.kata.android.game_tic_tac_toe.domain.repository.GameRepositoryImpl

@@ -1,7 +1,7 @@
 package com.kata.android.game_tic_tac_toe
 
 import android.app.Application
-import com.kata.android.game_tic_tac_toe.presentation.di.gameModule
+import com.kata.android.game_tic_tac_toe.di.gameModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 /**
