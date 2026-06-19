@@ -88,7 +88,7 @@ class GameBoardStateTest {
     fun `game is draw when board is full and no winner`() {
         val gameBoardState = GameBoardState()
         var state = gameBoardState
-        // X: 0, O: 1, X: 2, O: 3, X: 5, O: 4, X: 6, O: 7, X: 8
+        // X: 0, O: 1, X: 2, O: 3, X: 5, O: 4, X: 6, X: 7, O: 8
         state = state.playMove(0)  // X
         state = state.playMove(1)  // O
         state = state.playMove(2)  // X
@@ -96,8 +96,8 @@ class GameBoardStateTest {
         state = state.playMove(5)  // X
         state = state.playMove(4)  // O
         state = state.playMove(6)  // X
-        state = state.playMove(7)  // O
         state = state.playMove(8)  // X
+        state = state.playMove(7)  // O
 
         assertTrue(state.isGameOver)
         assertEquals(GameBoardResult.DRAW, state.gameBoardResult)
