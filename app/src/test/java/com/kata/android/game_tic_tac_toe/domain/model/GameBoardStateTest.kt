@@ -103,5 +103,15 @@ class GameBoardStateTest {
         assertEquals(GameBoardResult.DRAW, state.gameBoardResult)
     }
 
+    @Test
+    fun `cannot play move on occupied cell`() {
+        val gameBoardState = GameBoardState()
+        var state = gameBoardState
+        state = state.playMove(0)  // X at 0
+        state = state.playMove(0)  // O tries to play at 0 (invalid)
+
+        assertEquals(GamePlayer.O, state.currentGamePlayer)
+    }
+
 
 }
