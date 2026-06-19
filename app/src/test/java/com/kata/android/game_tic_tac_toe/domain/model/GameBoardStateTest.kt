@@ -61,5 +61,20 @@ class GameBoardStateTest {
         assertEquals(GameBoardResult.X_WINS, state.gameBoardResult)
     }
 
+    @Test
+    fun `game is over when player wins with diagonal`() {
+        val gameBoardState = GameBoardState()
+        var state = gameBoardState
+        // X: 0, O: 1, X: 4, O: 2, X: 8 (X wins)
+        state = state.playMove(0)  // X at 0
+        state = state.playMove(1)  // O at 1
+        state = state.playMove(4)  // X at 4
+        state = state.playMove(2)  // O at 2
+        state = state.playMove(8)  // X at 8 (wins)
+
+        assertTrue(state.isGameOver)
+        assertEquals(GameBoardResult.X_WINS, state.gameBoardResult)
+    }
+
 
 }
