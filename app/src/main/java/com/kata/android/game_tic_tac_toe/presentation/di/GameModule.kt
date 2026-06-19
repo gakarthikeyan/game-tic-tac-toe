@@ -3,6 +3,7 @@ package com.kata.android.game_tic_tac_toe.presentation.di
 import com.kata.android.game_tic_tac_toe.domain.repository.GameRepository
 import com.kata.android.game_tic_tac_toe.domain.repository.GameRepositoryImpl
 import com.kata.android.game_tic_tac_toe.domain.usecase.GetGameStateUseCase
+import com.kata.android.game_tic_tac_toe.domain.usecase.PlayMoveUseCase
 import org.koin.dsl.module
 /**
  * Game Tic-Tac-Toe with TDD approach.
@@ -16,6 +17,7 @@ val gameModule = module {
     // Repository
     single<GameRepository> { GameRepositoryImpl() }
 
-    // Use Case
+    // Use Cases
     factory { GetGameStateUseCase(get()) }
+    factory { PlayMoveUseCase(get()) }
 }
