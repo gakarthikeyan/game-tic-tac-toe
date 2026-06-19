@@ -53,4 +53,24 @@ class GameBoardTest {
         )
         assertTrue(gameBoard.isFull())
     }
+
+    @Test
+    fun `board is not full when there are empty cells`() {
+        val gameBoard = GameBoard()
+        assertFalse(gameBoard.isFull())
+    }
+
+    @Test
+    fun `can check if player has winning row`() {
+        val gameBoard = GameBoard(
+            cells = arrayOf(
+                GamePlayer.X, GamePlayer.X, GamePlayer.X,
+                null, null, null,
+                null, null, null
+            )
+        )
+        assertTrue(gameBoard.hasWinningRow(GamePlayer.X))
+    }
+
+
 }
