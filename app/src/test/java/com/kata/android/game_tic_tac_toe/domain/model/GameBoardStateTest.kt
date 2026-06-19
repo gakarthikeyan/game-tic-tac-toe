@@ -113,5 +113,14 @@ class GameBoardStateTest {
         assertEquals(GamePlayer.O, state.currentGamePlayer)
     }
 
+    @Test
+    fun `game state is updated payer move and game board is updated`() {
+        val gameBoardState = GameBoardState()
+        val newGameState = gameBoardState.playMove(4)  // X plays on cell 5 (index 4)
 
+        assertEquals(GamePlayer.O, newGameState.currentGamePlayer)
+        assertEquals(GamePlayer.X, newGameState.gameBoard.cells[4])
+        assertFalse(newGameState.isGameOver)
+        assertEquals(GameBoardResult.ONGOING, newGameState.gameBoardResult)
+    }
 }
