@@ -128,5 +128,17 @@ class GameBoardTest {
         assertTrue(gameBoard.hasWinningDiagonal(GamePlayer.X))
     }
 
+    @Test
+    fun `can check if player has winning diagonal (top-right to bottom-left)`() {
+        val gameBoard = GameBoard(
+            cells = arrayOf(
+                null, null, GamePlayer.X,
+                null, GamePlayer.X, null,
+                GamePlayer.X, null, null
+            )
+        )
+        assertTrue(gameBoard.hasWinningDiagonal(GamePlayer.X))
+    }
+
 
 }
