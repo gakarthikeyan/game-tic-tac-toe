@@ -4,7 +4,14 @@ import com.kata.android.game_tic_tac_toe.domain.model.GameBoardState
 import junit.framework.TestCase
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
-
+/**
+ * Game Tic-Tac-Toe with TDD approach.
+ *
+ * Repository implementation test for the game save,
+ * retrieve state and other operations.
+ *
+ * @author Karthikeyan G
+ */
 class GameRepositoryImplTest {
 
     private val gameRepositoryImpl = GameRepositoryImpl()
